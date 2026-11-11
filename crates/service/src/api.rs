@@ -230,7 +230,7 @@ struct OverlayQuery {
 async fn access_overlay<F>(
     service: &Service,
     work: F,
-) -> Result<crate::overlay::ControlSnapshot, Response>
+) -> Result<crate::overlay::ControlSnapshot, (StatusCode, &'static str)>
 where
     F: FnOnce(
             &mut crate::overlay::OverlayControl,
@@ -251,17 +251,19 @@ where
     .await
     {
         Ok(Ok(snapshot)) => Ok(snapshot),
-        Ok(Err((status, message))) => Err(failure(status, message)),
-        Err(_) => Err(failure(
+        Ok(Err(error)) => Err(error),
+        Err(_) => Err((
             StatusCode::INTERNAL_SERVER_ERROR,
             "Overlay operation interrupted",
         )),
     }
 }
-fn overlay_response(result: Result<crate::overlay::ControlSnapshot, Response>) -> Response {
+fn overlay_response(
+    result: Result<crate::overlay::ControlSnapshot, (StatusCode, &'static str)>,
+) -> Response {
     match result {
         Ok(snapshot) => Json(snapshot).into_response(),
-        Err(response) => response,
+        Err((status, message)) => failure(status, message),
     }
 }
 async fn overlay_control(State(service): State<Service>) -> Response {
@@ -321,7 +323,7 @@ async fn overlay_status(
     .await
     {
         Ok(control) => control,
-        Err(response) => return response,
+        Err((status, message)) => return failure(status, message),
     };
     match service.controller.lock() {
         Ok(c) => {
