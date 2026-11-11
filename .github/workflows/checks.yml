@@ -37,10 +37,11 @@ jobs:
         run: npm --prefix ui run test:overlay:live
       - name: Verify all application pages, languages and widths
         run: npm --prefix ui run test:app
+      - name: Generate bundled dependency notices before desktop compilation
+        run: python scripts/notices.py
       - run: cargo fmt --all -- --check
       - run: cargo test --locked --workspace
       - run: cargo clippy --locked --workspace --all-targets -- -D warnings
-      - run: python scripts/notices.py
       - run: cargo check --locked -p open-delay-desktop
       - run: npm --prefix integrations/streamdeck ci
       - run: npm --prefix integrations/streamdeck test

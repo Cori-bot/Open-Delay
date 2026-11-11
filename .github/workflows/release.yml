@@ -77,6 +77,8 @@ jobs:
       - name: Verify all application pages, languages and widths
         run: npm --prefix ui run test:app
       - run: npm --prefix ui audit --omit=dev
+      - name: Generate bundled dependency notices before desktop compilation
+        run: python scripts/notices.py
       - run: cargo fmt --all -- --check
       - run: cargo test --locked --workspace
       - run: cargo clippy --locked --workspace --all-targets -- -D warnings
