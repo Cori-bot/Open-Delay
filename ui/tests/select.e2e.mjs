@@ -11,7 +11,7 @@ try {
   const address = server.httpServer.address();
   browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true, timeout: 15000 });
   console.log('Chromium launched');
-  for (const width of [640, 1100]) {
+  for (const width of [320, 640, 1100]) {
     const page = await browser.newPage({ viewport: { width, height: 700 } });
     page.setDefaultTimeout(8000);
     console.log(`Opening fixture (${width}px)`);
@@ -19,6 +19,11 @@ try {
     const trigger = page.getByRole('combobox', { name: 'Choix' });
     await trigger.focus();
     await page.keyboard.press('Enter');
+    const popup = page.locator('.select-popup');
+    await popup.waitFor();
+    const bounds = await popup.boundingBox();
+    assert.ok(bounds && bounds.x >= 0 && bounds.x + bounds.width <= width + 1, 'Select popup stays within the viewport');
+    assert.ok(await popup.evaluate(el => el.scrollWidth <= el.clientWidth + 1), 'Select popup has no clipped horizontal content');
     await page.getByRole('option', { name: 'Deuxième choix' }).click();
     assert.equal(await page.locator('output').innerText(), 'two');
     assert.equal(await page.getByRole('combobox', { name: 'Indisponible' }).isDisabled(), true);

@@ -98,6 +98,7 @@ impl Service {
     pub fn snapshot(&self) -> Option<serde_json::Value> {
         let controller = self.controller.lock().ok()?;
         let mut value = serde_json::to_value(controller.snapshot()).ok()?;
+        value["version"] = serde_json::json!(env!("CARGO_PKG_VERSION"));
         value["endpoints"] = serde_json::json!({"api_base":format!("http://127.0.0.1:{}",self.api_port),"rtmp_port":self.rtmp_port});
         Some(value)
     }

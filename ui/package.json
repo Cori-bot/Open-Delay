@@ -13,6 +13,7 @@
     "test:select": "node tests/select.e2e.mjs",
     "test:overlay": "node tests/overlay.e2e.mjs",
     "test:overlay:live": "node tests/overlay-live.e2e.mjs",
+    "test:ux:live": "node tests/ux-live.e2e.mjs",
     "test:updates": "node tests/updates.e2e.mjs",
     "test:app": "node tests/app.e2e.mjs"
   },

@@ -60,3 +60,25 @@ summary{color:var(--text);font-size:13px;cursor:pointer}summary:hover{color:#fff
 @media(max-width:768px){.two-columns{grid-template-columns:minmax(0,1fr)}.hotkey-row{grid-template-columns:minmax(0,1fr) minmax(110px,1fr) auto}.settings-form .hotkey-row input{max-width:none}}
 @media(max-width:600px){.route-grid,.form-columns,.choice-grid{grid-template-columns:minmax(0,1fr)}.dialog{padding:18px}.setup-hero{align-items:flex-start;gap:14px}.setup-art{width:48px;height:48px}.theme-picker{grid-template-columns:repeat(2,minmax(0,1fr))}.hotkey-row{grid-template-columns:minmax(0,1fr) auto}.hotkey-row>span{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){.toggle-track::before,.dialog,.dialog-backdrop,.notification{animation:none!important;transition:none!important}}
+
+.setup-destination-field { display: grid; gap: 8px; margin-bottom: 16px; }
+/* Keep modal controls outside the scrollable content: sticky footers covered form fields. */
+.dialog { display: flex; flex-direction: column; padding: 0; overflow: hidden; max-height: calc(100dvh - 32px); }
+.dialog-head { flex: none; padding: 16px 24px; }
+.dialog-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 24px 24px; }
+.dialog-footer { flex: none; padding: 14px 24px; border-top: 1px solid var(--line); background: var(--panel); }
+.dialog-footer .dialog-actions { margin: 0; }
+@media (max-width: 600px) {
+  .dialog { padding: 0; }
+  .dialog-head { padding-inline: 18px; }
+  .dialog-body { padding-inline: 18px; }
+  .dialog-footer { padding-inline: 18px; }
+}
+@container workspace (max-width: 560px) {
+  .route-grid, .two-columns, .form-columns { grid-template-columns: minmax(0, 1fr); }
+  .save-bar { position: static; }
+}
+@media (max-height: 600px) {
+  .overlay-preview-studio { position: static; }
+  .save-bar { position: static; }
+}

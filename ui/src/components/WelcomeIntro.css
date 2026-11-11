@@ -1,4 +1,4 @@
-.dialog:has(.welcome-intro) { width: min(840px, calc(100vw - 32px)); max-width: 840px; padding: 0; overflow: auto; }
+.dialog:has(.welcome-intro) { width: min(840px, calc(100vw - 32px)); max-width: 840px; padding: 0; overflow: hidden; }
 .dialog:has(.welcome-intro) > .dialog-head { padding: 16px 22px; margin: 0; border-bottom: 1px solid #303034; }
 .dialog:has(.welcome-intro) > .dialog-head h2 { font-size: 12px; font-weight: 500; color: #b5b5bc; }
 .welcome-intro { color: #f5f5f3; }
@@ -29,3 +29,17 @@
 .welcome-skip { display: block; width: fit-content; margin: 14px 0 0 auto; padding: 8px 0; border: 0; background: transparent; color: #a5a5af; text-decoration: underline; text-underline-offset: 3px; font-size: 11px; }
 .welcome-skip:hover { color: #fff; }
 @media (max-width: 520px) { .welcome-art { min-height: 255px; padding: 18px 18px 23px; gap: 20px; }.welcome-emblem { width: 90px; height: 90px; border-radius: 23px; }.welcome-signal-flow { gap: 9px; }.welcome-signal-end { width: 43px; }.welcome-waveform { gap: 2px; }.welcome-story { padding: 24px 22px 18px; }.welcome-description { min-height: 92px; }.welcome-navigation { align-items: flex-start; gap: 10px; }.welcome-navigation li button { width: 23px; }.welcome-actions .button.primary { font-size: 11px; padding: 10px; }.welcome-demo-readout { gap: 8px; font-size: 7px; }.welcome-demo-readout strong { font-size: 9px; } }
+
+.dialog:has(.welcome-intro) .dialog-body { padding: 0; }
+.dialog:has(.welcome-intro) .dialog-footer { padding: 14px 24px; }
+.dialog-footer .welcome-navigation { margin-top: 0; }
+.dialog-footer .welcome-skip { margin-top: 4px; }
+@media (max-height: 750px) {
+  .welcome-art { min-height: 140px; padding: 14px 24px; gap: 10px; }
+  .welcome-emblem { width: 60px; height: 60px; border-radius: 16px; }
+  .welcome-emblem svg { width: 40px; height: 40px; }
+  .welcome-art-caption, .welcome-signal-flow { display: none; }
+  .welcome-story { padding-block: 20px; }
+}
+@media (max-height: 500px) { .welcome-art { display: none; } }
+@media (max-width: 520px) { .dialog:has(.welcome-intro) .dialog-footer { padding-inline: 18px; } }

@@ -28,7 +28,13 @@ export function WelcomeIntro({ t, onComplete, onSetup }: { t: Translate; onCompl
   const slide = slides[step];
   const transition = { duration: animate ? motionTokens.duration.slow : motionTokens.duration.fast, ease: motionTokens.easing.smooth };
 
-  return <Modal title={t('Bienvenue dans Open-Delay', 'Welcome to Open-Delay')} close={onComplete}>
+  return <Modal title={t('Bienvenue dans Open-Delay', 'Welcome to Open-Delay')} close={onComplete} footer={<>
+        <div className="welcome-navigation">
+          <ol aria-label={t('Présentation en trois étapes', 'Three-step introduction')}>{slides.map((item, index) => <li key={item.overline}><button type="button" aria-label={item.overline} aria-current={index === step ? 'step' : undefined} onClick={() => setStep(index)}><span/></button></li>)}</ol>
+          <div className="welcome-actions">{step > 0 && <button className="button quiet" type="button" aria-label={t('Précédent', 'Back')} onClick={() => setStep(value => value - 1)}><ArrowLeft size={17}/></button>}<button type="button" className="button primary" onClick={() => step === 2 ? (onSetup ?? onComplete)() : setStep(value => value + 1)}>{step === 2 ? t('Configurer mon stream', 'Set up my stream') : t('Découvrir la suite', 'Keep exploring')}<ArrowRight size={17}/></button></div>
+        </div>
+        <button type="button" className="welcome-skip" onClick={onComplete}>{t('Passer la présentation', 'Skip introduction')}</button>
+    </>}>
     <div className="welcome-intro">
       <div className="welcome-art" aria-hidden="true">
         <div className="welcome-art-grid"/>
@@ -50,11 +56,7 @@ export function WelcomeIntro({ t, onComplete, onSetup }: { t: Translate; onCompl
           <p className="welcome-description">{slide.detail}</p>
           <p className="welcome-tag"><span/>{slide.tag}</p>
         </motion.div>
-        <div className="welcome-navigation">
-          <ol aria-label={t('Présentation en trois étapes', 'Three-step introduction')}>{slides.map((item, index) => <li key={item.overline}><button type="button" aria-label={item.overline} aria-current={index === step ? 'step' : undefined} onClick={() => setStep(index)}><span/></button></li>)}</ol>
-          <div className="welcome-actions">{step > 0 && <button className="button quiet" type="button" aria-label={t('Précédent', 'Back')} onClick={() => setStep(value => value - 1)}><ArrowLeft size={17}/></button>}<button type="button" className="button primary" onClick={() => step === 2 ? (onSetup ?? onComplete)() : setStep(value => value + 1)}>{step === 2 ? t('Configurer mon stream', 'Set up my stream') : t('Découvrir la suite', 'Keep exploring')}<ArrowRight size={17}/></button></div>
-        </div>
-        <button type="button" className="welcome-skip" onClick={onComplete}>{t('Passer la présentation', 'Skip introduction')}</button>
+
       </div>
     </div>
   </Modal>;

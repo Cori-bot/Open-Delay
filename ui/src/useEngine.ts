@@ -63,7 +63,7 @@ export function useEngine() {
         if (stopped) return;
         try {
           const result = parseCommandResult(event.payload);
-          setStatus(old => !old || result.status.sequence >= old.sequence ? { ...result.status, endpoints: result.status.endpoints ?? old?.endpoints } : old);
+          setStatus(old => !old || result.status.sequence >= old.sequence ? { ...result.status, version: result.status.version ?? old?.version, endpoints: result.status.endpoints ?? old?.endpoints } : old);
           if (!result.success) setError([result.message ?? result.reason, ...(result.results ?? []).filter(route => !route.success).map(route => `${route.route_id}: ${route.reason ?? 'refused'}`)].filter(Boolean).join(' · ') || 'Native command refused');
         } catch (cause) { setError(String(cause)); }
       });
@@ -86,7 +86,7 @@ export function useEngine() {
       await preceding;
       const result = await api.command(command);
       if (mounted.current) {
-        setStatus(old => !old || result.status.sequence >= old.sequence ? { ...result.status, endpoints: result.status.endpoints ?? old?.endpoints } : old);
+        setStatus(old => !old || result.status.sequence >= old.sequence ? { ...result.status, version: result.status.version ?? old?.version, endpoints: result.status.endpoints ?? old?.endpoints } : old);
         if (!result.success && commandNumber === latestCommand.current) setError([result.message ?? result.reason, ...(result.results ?? []).filter(route => !route.success).map(route => `${route.route_id}: ${route.reason ?? 'refused'}`)].join(' · '));
       }
     } catch (cause) {

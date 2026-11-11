@@ -22,8 +22,11 @@
         "title": "Open-Delay",
         "width": 1100,
         "height": 820,
-        "minWidth": 640,
-        "minHeight": 600,
+        "minWidth": 960,
+        "minHeight": 640,
+        "resizable": true,
+        "maximizable": true,
+        "zoomHotkeysEnabled": false,
         "backgroundColor": "#0a0a0a"
       }
     ],

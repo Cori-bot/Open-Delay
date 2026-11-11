@@ -2,7 +2,7 @@ import { Dialog } from '@base-ui/react/dialog';
 import type { ReactNode } from 'react';
 import { AppIcon } from './AppIcon';
 
-export function Modal({ title, children, close }: { title: string; children: ReactNode; close: () => void }) {
+export function Modal({ title, children, close, footer }: { title: string; children: ReactNode; close: () => void; footer?: ReactNode }) {
   return (
     <Dialog.Root open onOpenChange={(open) => { if (!open) close(); }}>
       <Dialog.Portal>
@@ -14,7 +14,8 @@ export function Modal({ title, children, close }: { title: string; children: Rea
               <AppIcon name="close" />
             </Dialog.Close>
           </div>
-          {children}
+          <div className="dialog-body">{children}</div>
+          {footer && <div className="dialog-footer">{footer}</div>}
         </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>

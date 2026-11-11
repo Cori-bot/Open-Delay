@@ -11,10 +11,11 @@ import { BrandMark } from './Brand';
 import './OverlayEditor.css';
 
 type Translate = (fr: string, en: string) => string;
-type Props = { t: Translate; lang: Language; port: number; status: Status | null; routes: RouteConfig[] };
+type Props = { t: Translate; lang: Language; port: number; status: Status | null; routes: RouteConfig[]; onDirtyChange?: (dirty: boolean) => void };
 type Section = 'appearance' | 'content' | 'connection';
 
-export function OverlayEditor({ t, lang, port, status, routes }: Props) {
+export function OverlayEditor({ t, lang, port, status, routes, onDirtyChange }: Props) {
+  const [hasEdits, setHasEdits] = useState(false);
   const [section, setSection] = useState<Section>('appearance');
   const [config, setConfig] = useState<OverlayConfig>({ ...defaultOverlay, lang });
   const [control, setControl] = useState<OverlayControl | null>(null);
@@ -28,6 +29,7 @@ export function OverlayEditor({ t, lang, port, status, routes }: Props) {
   const [preview, setPreview] = useState<OverlayState | 'actual'>('delayed');
   const active = { ...config, lang, text: config.text.trim() };
   const dirty = JSON.stringify(active) !== JSON.stringify(control?.config);
+  useEffect(() => { onDirtyChange?.(hasEdits && dirty); }, [hasEdits, dirty, onDirtyChange]);
   const sourceUrl = port ? `http://127.0.0.1:${port}/overlay?managed=true` : '';
   const linked = !connectionError && !!control?.source_recent;
   const grouped = status?.routes.filter(route => route.is_connected && routes.some(config => config.id === route.id && config.include_in_group)) ?? [];
@@ -55,6 +57,7 @@ export function OverlayEditor({ t, lang, port, status, routes }: Props) {
   }, []);
 
   const update = (patch: Partial<OverlayConfig>) => {
+    setHasEdits(true);
     setNotice('');
     setConfig(old => {
       const next = { ...old, ...patch };

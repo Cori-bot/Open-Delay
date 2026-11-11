@@ -47,6 +47,16 @@ fn request(path: &str) -> axum::http::request::Builder {
         .header("Host", "127.0.0.1:49155")
 }
 
+#[test]
+fn service_snapshot_exposes_running_engine_version() {
+    let dir = tempfile::tempdir().unwrap();
+    let service = local_service(dir.path());
+    assert_eq!(
+        service.snapshot().unwrap()["version"],
+        env!("CARGO_PKG_VERSION")
+    );
+}
+
 #[tokio::test]
 async fn session_auth_origin_and_overlay_redaction() {
     let dir = tempfile::tempdir().unwrap();
