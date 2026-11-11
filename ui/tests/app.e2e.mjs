@@ -51,7 +51,7 @@ try {
     }
     if (lang==='en' && width===1100) {
       status.is_connected=false; status.routes=[{...runtime,is_connected:false,transport_state:'error',error:'Output unavailable'}];
-      await page.goto(`${origin}/?page=dashboard`); await page.getByRole('alert').first().waitFor();
+      await page.goto(`${origin}/?page=dashboard`); await page.waitForFunction(()=>document.querySelector('.signal-indicator')?.textContent === 'Error');
       assert.equal(await page.locator('.signal-indicator').innerText(), 'Error');
       assert.equal(await page.getByRole('button',{name:'Go live',exact:true}).isDisabled(),true);
     }

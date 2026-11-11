@@ -19,7 +19,7 @@ export function UpdatePanel({ updates, active, engineReady, t }: { updates: Retu
     installing: t('Installation en cours. L’application va redémarrer.', 'Installing. The application will restart.'),
     error: t('La mise à jour n’a pas pu aboutir. Vous pouvez réessayer.', 'The update could not be completed. You can try again.'),
   };
-  return <section className="panel update-panel" aria-labelledby="updates-title"><div className="update-panel-heading"><ShieldCheck size={20}/><div><h2 id="updates-title">{t('Mises à jour', 'Updates')}</h2><span>{t('Version installée', 'Installed version')} {status?.current_version ?? '0.2.0'}</span></div></div>
+  return <section className="panel update-panel" aria-labelledby="updates-title"><div className="update-panel-heading"><ShieldCheck size={20}/><div><h2 id="updates-title">{t('Mises à jour', 'Updates')}</h2><span>{t('Version installée', 'Installed version')} {status?.current_version ?? '—'}</span></div></div>
     {!isDesktop() ? <p>{t('Les mises à jour sont disponibles dans l’application Windows.', 'Updates are available in the Windows application.')}</p> : <>
       <p role="status">{!status ? t('Connexion au service de mise à jour…', 'Connecting to the updater…') : !status.configured ? t('Les mises à jour ne sont pas configurées pour cette version.', 'Updates are not configured for this build.') : messages[status.phase]}</p>
       {(error || status?.error) && <p className="field-error" role="alert">{error || status?.error}</p>}
