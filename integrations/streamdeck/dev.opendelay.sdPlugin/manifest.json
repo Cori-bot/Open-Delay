@@ -1,0 +1,122 @@
+{
+  "Name": "Open-Delay",
+  "Version": "0.1.0.0",
+  "Author": "Open-Delay contributors",
+  "Description": "Control your local Open-Delay streaming engine.",
+  "UUID": "dev.opendelay",
+  "Category": "Open-Delay",
+  "CategoryIcon": "imgs/navigation",
+  "Icon": "imgs/marketplace",
+  "CodePath": "bin/plugin.mjs",
+  "SDKVersion": 3,
+  "Software": {
+    "MinimumVersion": "7.1"
+  },
+  "OS": [
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Nodejs": {
+    "Version": "24"
+  },
+  "Actions": [
+    {
+      "UUID": "dev.opendelay.setdelay",
+      "Name": "Set Delay",
+      "Tooltip": "Prepare and apply a delay; zero returns live.",
+      "Icon": "imgs/delay",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "PropertyInspectorPath": "ui/settings.html",
+      "States": [
+        {
+          "Image": "imgs/delay",
+          "TitleAlignment": "bottom",
+          "FontSize": 14
+        },
+        {
+          "Image": "imgs/delay",
+          "TitleAlignment": "bottom",
+          "FontSize": 14
+        }
+      ],
+      "DisableAutomaticStates": true
+    },
+    {
+      "UUID": "dev.opendelay.golive",
+      "Name": "Go Live",
+      "Tooltip": "Cancel preparation and return to live.",
+      "Icon": "imgs/live",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "PropertyInspectorPath": "ui/settings.html",
+      "States": [
+        {
+          "Image": "imgs/live",
+          "TitleAlignment": "bottom",
+          "FontSize": 14
+        },
+        {
+          "Image": "imgs/live",
+          "TitleAlignment": "bottom",
+          "FontSize": 14
+        }
+      ],
+      "DisableAutomaticStates": true
+    },
+    {
+      "UUID": "dev.opendelay.toggle",
+      "Name": "Toggle Delay",
+      "Tooltip": "Toggle the selected delay.",
+      "Icon": "imgs/toggle",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "PropertyInspectorPath": "ui/settings.html",
+      "States": [
+        {
+          "Image": "imgs/toggle",
+          "TitleAlignment": "bottom",
+          "FontSize": 14
+        },
+        {
+          "Image": "imgs/toggle",
+          "TitleAlignment": "bottom",
+          "FontSize": 14
+        }
+      ]
+    },
+    {
+      "UUID": "dev.opendelay.status",
+      "Name": "Status",
+      "Tooltip": "Show actual route status.",
+      "Icon": "imgs/status",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": false,
+      "PropertyInspectorPath": "ui/settings.html",
+      "States": [
+        {
+          "Image": "imgs/status",
+          "TitleAlignment": "bottom",
+          "FontSize": 14
+        },
+        {
+          "Image": "imgs/status",
+          "TitleAlignment": "bottom",
+          "FontSize": 14
+        }
+      ],
+      "DisableAutomaticStates": true
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T20:32:57.073727+00:00",
+  "title": "Design System: Open-Delay Signal",
+  "extensions": {
+    "colorMeta": {},
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Page title",
+        "purpose": "Page headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Controls and running text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "notification",
+        "value": "0 10px 30px #0008",
+        "purpose": "Separate notifications from the interface."
+      }
+    ],
+    "motion": [],
+    "breakpoints": [
+      {
+        "name": "desktop",
+        "value": "900px"
+      },
+      {
+        "name": "compact",
+        "value": "720px"
+      },
+      {
+        "name": "narrow",
+        "value": "470px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "description": "Primary button",
+      "html": "<button class=\"ds-primary\">Appliquer le délai</button>",
+      "css": ".ds-primary{background:#f1f1ee;color:#171718;border:1px solid transparent;border-radius:8px;min-height:42px;padding:0 16px;font:650 14px system-ui}.ds-primary:hover{background:#ffffff}.ds-primary:focus-visible{outline:2px solid #f1f1ee;outline-offset:3px}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "description": "Secondary button",
+      "html": "<button class=\"ds-secondary\">Configurer</button>",
+      "css": ".ds-secondary{background:#222224;color:#f5f5f3;border:1px solid #38383b;border-radius:8px;min-height:42px;padding:0 16px;font:650 14px system-ui}.ds-secondary:hover{background:#333336}.ds-secondary:focus-visible{outline:2px solid #f1f1ee;outline-offset:3px}",
+      "refersTo": "button-secondary"
+    },
+    {
+      "name": "Text input",
+      "kind": "input",
+      "description": "Text input",
+      "html": "<label class=\"ds-label\">Serveur<input class=\"ds-input\" value=\"rtmp://127.0.0.1\"/></label>",
+      "css": ".ds-label{display:grid;gap:8px;color:#f5f5f3;font:14px system-ui}.ds-input{padding:12px;border:1px solid #38383b;border-radius:8px;background:#101011;color:#f5f5f3}.ds-input:focus-visible{outline:2px solid #f1f1ee;outline-offset:3px}"
+    },
+    {
+      "name": "Selected navigation",
+      "kind": "nav",
+      "description": "Selected navigation",
+      "html": "<nav class=\"ds-nav\"><button aria-current=\"page\">Tableau de bord</button></nav>",
+      "css": ".ds-nav button{background:#303032;color:#f1f1ee;border:0;border-radius:8px;padding:11px 14px;font:650 14px system-ui}.ds-nav button:focus-visible{outline:2px solid #f1f1ee;outline-offset:3px}"
+    },
+    {
+      "name": "State indicator",
+      "kind": "chip",
+      "description": "State indicator",
+      "html": "<span class=\"ds-state\"><i></i> LIVE</span>",
+      "css": ".ds-state{display:inline-flex;align-items:center;gap:5px;color:#acd9b8;font:650 10px system-ui;letter-spacing:.04em}.ds-state i{width:6px;height:6px;border-radius:50%;background:currentColor}"
+    },
+    {
+      "name": "Destination card",
+      "kind": "card",
+      "description": "Destination card",
+      "html": "<article class=\"ds-card\"><strong>Destination</strong><p>En attente</p></article>",
+      "css": ".ds-card{padding:16px;background:#181819;border:1px solid #38383b;border-radius:12px;color:#f5f5f3;font:14px system-ui}.ds-card p{color:#b5b5b9;font-size:12px}",
+      "refersTo": "card"
+    }
+  ],
+  "narrative": {
+    "northStar": "Signal",
+    "overview": "Une régie personnelle pour choisir où se trouve le direct dans le temps. L’état effectif se lit en premier ; les commandes restent accessibles au clavier.",
+    "keyCharacteristics": [
+      "Surfaces sombres neutres, texte blanc cassé et couleurs discrètes réservées aux états.",
+      "Repère d’historique fondé sur les mesures réelles du moteur.",
+      "États, erreurs et récupération lisibles avec du texte, sans dépendre de la couleur."
+    ],
+    "rules": [],
+    "dos": [
+      "Distinguer clairement consigne et délai effectif.",
+      "Laisser les erreurs et la récupération visibles hors des notifications temporaires.",
+      "Préserver les logos authentiques et la provenance des marques."
+    ],
+    "donts": [
+      "Inventer d’activité, de connexion ou de mesure média.",
+      "Masquer le retour au direct pendant la préparation.",
+      "Journaliser les clés de stream ou les placer dans les adresses de contrôle."
+    ]
+  }
+}

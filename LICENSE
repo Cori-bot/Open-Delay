@@ -1,0 +1,59 @@
+Open-Delay Source-Available License 1.0
+SPDX-License-Identifier: LicenseRef-OpenDelay-NoSale-1.0
+
+Copyright (c) 2026 Coridor and the Open-Delay contributors.
+
+1. Permission
+Subject to this license, you may use, inspect, compile, copy, modify and
+redistribute this software and derivative works, including forks, without
+royalties. Use by individuals and organizations, including professional and
+monetized streaming, is expressly permitted.
+
+2. No sale of the software
+You may not require or collect payment for access to, downloading, running,
+licensing, unlocking features of, or receiving copies of this software or a
+derivative work. This includes subscription access, paid hosted access to its
+functionality, and bundles whose price includes access to this software.
+You may not remove or evade this restriction by renaming, wrapping, embedding,
+or modifying the software.
+
+Optional donations are permitted only when access and functionality do not
+depend on donating. You may charge for independently offered consulting,
+training or support, provided the software and its features remain available
+without that purchase. Selling content produced using the software, or earning
+income from streams using it, is permitted.
+
+3. Redistribution and contributions
+Redistributions must retain this license, copyright notices and third-party
+notices. Distribute derivative works under this license, identify material
+modifications, and provide recipients the corresponding modifiable source
+code and instructions needed to build the distributed version without charge.
+Third-party components remain governed by their own licenses.
+Unless explicitly stated otherwise, contributions submitted for inclusion are
+offered under this license. Contributors retain their copyright.
+
+4. Patent grant
+Each contributor grants a worldwide, non-exclusive, royalty-free patent license
+to make, use and distribute their contribution under this license, limited to
+claims necessarily infringed by that contribution alone or combined with the
+software to which it was contributed. This patent grant terminates for a party
+that initiates patent litigation alleging the software infringes a patent.
+
+5. Names and trademarks
+This license grants no trademark rights. Modified distributions must identify
+their modifications and must not claim to be official Open-Delay releases.
+
+6. Termination
+Permissions terminate automatically on violation. They are reinstated when the
+violation is fully cured within 30 days after you discover it, unless the
+copyright holder has expressly and finally terminated your permissions.
+
+7. No warranty or liability
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE AUTHORS AND
+CONTRIBUTORS ARE NOT LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING
+FROM OR IN CONNECTION WITH THE SOFTWARE OR ITS USE.
+
+This is a source-available license with a sale restriction, not an OSI-approved
+open-source license. It does not relicense any third-party component.

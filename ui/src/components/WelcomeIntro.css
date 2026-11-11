@@ -1,0 +1,31 @@
+.dialog:has(.welcome-intro) { width: min(840px, calc(100vw - 32px)); max-width: 840px; padding: 0; overflow: auto; }
+.dialog:has(.welcome-intro) > .dialog-head { padding: 16px 22px; margin: 0; border-bottom: 1px solid #303034; }
+.dialog:has(.welcome-intro) > .dialog-head h2 { font-size: 12px; font-weight: 500; color: #b5b5bc; }
+.welcome-intro { color: #f5f5f3; }
+.welcome-art { position: relative; isolation: isolate; display: grid; justify-items: center; gap: 25px; min-height: 300px; padding: 20px 30px 28px; overflow: hidden; background: #121214; border-bottom: 1px solid #38383d; }
+.welcome-art-grid { position: absolute; z-index: -1; inset: 0; opacity: .3; background-image: linear-gradient(#45454b 1px, transparent 1px), linear-gradient(90deg, #45454b 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(ellipse at center, #000, transparent 75%); }
+.welcome-art-caption { width: 100%; display: flex; justify-content: space-between; gap: 15px; color: #8e8e98; font-size: 8px; letter-spacing: .18em; font-weight: 600; }
+.welcome-emblem { display: grid; place-items: center; width: 112px; height: 112px; margin: 4px 0 0; color: #ededeb; background: #1f1f23; border: 1px solid #606068; border-radius: 28px; box-shadow: 0 14px 35px #0007, inset 0 1px #ffffff24; }
+.welcome-signal-flow { display: flex; align-items: center; gap: 22px; width: min(100%, 560px); }
+.welcome-signal-end { flex: none; display: grid; justify-items: center; gap: 8px; width: 52px; color: #a9a9b3; }
+.welcome-signal-end span { font-size: 8px; letter-spacing: .08em; }
+.welcome-waveform { display: flex; align-items: center; justify-content: space-between; gap: 4px; flex: 1; height: 52px; min-width: 0; }
+.welcome-waveform i { display: block; flex: 1; min-width: 1px; max-width: 6px; height: 100%; border-radius: 4px; background: #f0f0ed; transform-origin: center; }
+.welcome-demo-readout { display: flex; align-items: center; justify-content: center; gap: 14px; min-height: 24px; padding: 7px 13px; border: 1px solid #3b3b42; background: #19191c; border-radius: 7px; color: #c5c5cc; font-size: 9px; letter-spacing: .04em; }
+.welcome-demo-readout strong { font-size: 11px; font-weight: 500; color: #fafaf8; }
+.welcome-story { padding: 28px 36px 22px; }
+.welcome-overline { margin: 0 0 14px; color: #a9a9b2; font-size: 9px; font-weight: 600; letter-spacing: .13em; }
+.welcome-story h2 { margin: 0; white-space: pre-line; font-size: clamp(29px, 4.5vw, 43px); line-height: 1.08; letter-spacing: -.05em; font-weight: 550; }
+.welcome-story h2:focus { outline: none; }
+.welcome-description { max-width: 600px; min-height: 50px; margin: 18px 0 0; color: #b9b9c2; font-size: 13px; line-height: 1.7; }
+.welcome-tag { display: flex; align-items: center; gap: 8px; margin: 17px 0 0; color: #dedee3; font-size: 11px; }
+.welcome-tag > span { width: 5px; height: 5px; border-radius: 50%; background: #ccc; }
+.welcome-navigation { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 28px; }
+.welcome-navigation ol { list-style: none; display: flex; margin: 0; padding: 0; gap: 4px; }
+.welcome-navigation li button { display: grid; place-items: center; width: 30px; height: 32px; border: 0; background: transparent; border-radius: 5px; }
+.welcome-navigation li button span { width: 19px; height: 3px; background: #4e4e56; border-radius: 3px; }
+.welcome-navigation li button[aria-current=step] span { background: #f5f5f3; }
+.welcome-actions { display: flex; align-items: center; gap: 8px; }
+.welcome-skip { display: block; width: fit-content; margin: 14px 0 0 auto; padding: 8px 0; border: 0; background: transparent; color: #a5a5af; text-decoration: underline; text-underline-offset: 3px; font-size: 11px; }
+.welcome-skip:hover { color: #fff; }
+@media (max-width: 520px) { .welcome-art { min-height: 255px; padding: 18px 18px 23px; gap: 20px; }.welcome-emblem { width: 90px; height: 90px; border-radius: 23px; }.welcome-signal-flow { gap: 9px; }.welcome-signal-end { width: 43px; }.welcome-waveform { gap: 2px; }.welcome-story { padding: 24px 22px 18px; }.welcome-description { min-height: 92px; }.welcome-navigation { align-items: flex-start; gap: 10px; }.welcome-navigation li button { width: 23px; }.welcome-actions .button.primary { font-size: 11px; padding: 10px; }.welcome-demo-readout { gap: 8px; font-size: 7px; }.welcome-demo-readout strong { font-size: 9px; } }

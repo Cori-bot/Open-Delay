@@ -1,0 +1,48 @@
+name: Windows checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: ui/package-lock.json
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@e9d7b9f1e587218970671bac74e5511ed9506e6a # v2
+      - run: python scripts/release_metadata.py
+      - run: python -m unittest discover -s scripts -p "test_release_metadata.py"
+      - run: npm --prefix ui ci
+      - run: npm --prefix ui run lint
+      - run: npm --prefix ui test
+      - run: npm --prefix ui run build
+      - run: cargo build --locked -p open-delay-service
+      - name: Verify desktop update UI in an isolated browser
+        run: npm --prefix ui run test:updates
+      - name: Verify real engine to browser-source delivery
+        run: npm --prefix ui run test:overlay:live
+      - name: Verify all application pages, languages and widths
+        run: npm --prefix ui run test:app
+      - run: cargo fmt --all -- --check
+      - run: cargo test --locked --workspace
+      - run: cargo clippy --locked --workspace --all-targets -- -D warnings
+      - run: python scripts/notices.py
+      - run: cargo check --locked -p open-delay-desktop
+      - run: npm --prefix integrations/streamdeck ci
+      - run: npm --prefix integrations/streamdeck test
+      - run: npm --prefix integrations/streamdeck run validate
+      - run: npm --prefix ui audit --omit=dev
